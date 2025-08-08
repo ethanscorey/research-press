@@ -490,3 +490,15 @@ function remove_admin_meta() {
 	remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
 }
 add_action( 'admin_init', __NAMESPACE__ . '\remove_admin_meta' );
+
+/**
+ * Remove items from admin bar.
+ */
+function remove_new_post_from_admin_bar() {
+	global $wp_admin_bar;
+	$wp_admin_bar->remove_menu( 'new-post' );
+	$wp_admin_bar->remove_menu( 'new-media' );
+	$wp_admin_bar->remove_menu( 'new-page' );
+	$wp_admin_bar->remove_menu( 'new-user' );
+}
+add_action( 'wp_before_admin_bar_render', __NAMESPACE__ . '\remove_new_post_from_admin_bar' );
