@@ -1,0 +1,15 @@
+{
+	"core": "WordPress/WordPress",
+	"port": 8181,
+	"testsPort": 8182,
+	"themes": ["./research-press"],
+	"mappings": {
+		"phpunit.xml": "./phpunit.xml",
+		"tests": "./tests",
+		"vendor": "./vendor"
+	},
+	"config": {
+		"WP_DEBUG": true,
+		"SCRIPT_DEBUG": true
+	}
+}

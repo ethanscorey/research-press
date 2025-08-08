@@ -1,0 +1,24 @@
+{
+    "extends": [ "plugin:@wordpress/eslint-plugin/recommended" ],
+    "overrides": [
+        {
+            "files": ["tests/js/**/*.js", "**/src/**/*.test.js", "tests/e2e/**/*.spec.ts"],
+            "rules": {
+                "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+            },
+            "env": {
+                "jest": true,
+                "browser": true
+            }
+        }
+    ],
+    "env": {
+        "browser": true
+    },
+    "rules": {
+
+                "jsx-a11y/label-has-associated-control": ["warn", {
+                    "assert": "either"
+                }]
+    }
+}

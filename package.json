@@ -1,0 +1,45 @@
+{
+	"name": "research-press",
+	"version": "0.0.1",
+	"description": "A theme for organizing research.",
+	"author": "Ethan Corey",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"wordpress",
+		"research"
+	],
+	"homepage": "https://github.com/ethanscorey/research-press",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ethanscorey/research-press.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ethanscorey/research-press/issues",
+		"email": "ethanscorey@gmail.com"
+	},
+	"devDependencies": {
+		"@wordpress/env": "^10.28.0",
+		"@wordpress/scripts": "^30.21.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.1.5",
+		"prettier": "^3.6.2",
+		"stylelint": "^16.23.1",
+		"stylelint-config-standard-scss": "^15.0.1"
+	},
+	"prettier": "@wordpress/prettier-config",
+	"scripts": {
+		"wp-env": "wp-env",
+		"lint:php": "vendor/bin/phpcs",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"lint:js": "wp-scripts lint-js --ignore-pattern 'extra/*.js'",
+		"lint:css": "wp-scripts lint-style research-press/**/*.{css,scss}",
+		"lint:md:docs": "wp-scripts lint-md-docs",
+		"lint": "npm run lint:php && npm run lint:js && npm run lint:css && npm run lint:pkg-json && npm run lint:md:docs",
+		"format:css": "stylelint --fix 'research-press/**/*.{css,scss}' && prettier --write 'research-press/**/*.{css,scss}'",
+		"format:js": "wp-scripts format",
+		"format:php": "vendor/bin/phpcbf",
+		"format": "npm run format:js && npm run format:css && npm run format:php",
+		"lint-staged": "lint-staged",
+		"prepare": "husky"
+	}
+}
