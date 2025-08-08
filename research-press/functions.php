@@ -2,14 +2,10 @@
 /**
  * ResearchPress theme functions.
  *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package WordPress
- * @subpackage research-press
- * @since ResearchPress 0.0.1
+ * @package research-press
  */
 
-namespace research_press;
+namespace ResearchPress;
 
 /**
  * Add the custom post type for sources.
