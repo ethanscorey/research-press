@@ -40,6 +40,7 @@
 		"format:php": "vendor/bin/phpcbf",
 		"format": "npm run format:js && npm run format:css && npm run format:php",
 		"lint-staged": "lint-staged",
+		"build": "wp-scripts build",
 		"prepare": "husky",
 		"version": "node scripts/updateVersion.js && npm run format:php; git add research-press/{style.css,readme.txt}",
 		"release": "npm version patch && git push --follow-tags"
