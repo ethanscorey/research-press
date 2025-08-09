@@ -13,5 +13,6 @@
 		"metaQuery": { "type": "array", "default": [] },
 		"paged": { "type": "number", "default": 1 }
 	},
+	"editorScript": "file:./index.js",
 	"render": "render.php"
 }

@@ -1,0 +1,12 @@
+{
+	"apiVersion": 3,
+	"name": "research-press/term-list",
+	"title": "ResearchPress Term List",
+	"category": "widgets",
+	"supports": { "html": false },
+	"attributes": {
+		"taxonomy": { "type": "string" }
+	},
+	"editorScript": "file:./index.js",
+	"render": "render.php"
+}
