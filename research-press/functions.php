@@ -63,6 +63,60 @@ add_action( 'init', __NAMESPACE__ . '\add_source_post_type', 0 );
 
 
 /**
+ * Add the custom post type for research memos.
+ */
+function add_research_memo_post_type() {
+		$labels = array(
+			'name'                     => _x( 'Research Memos', 'Post Type General Name', 'research-press' ),
+			'singular_name'            => _x( 'Research Memo', 'Post Type Singular Name', 'research-press' ),
+			'add_new'                  => __( 'Add New', 'research-press' ),
+			'add_new_item'             => __( 'Add New Research Memo', 'research-press' ),
+			'edit_item'                => __( 'Edit Research Memo', 'research-press' ),
+			'new_item'                 => __( 'New Research Memo', 'research-press' ),
+			'view_item'                => __( 'View Research Memo', 'research-press' ),
+			'view_items'               => __( 'View Research Memos', 'research-press' ),
+			'search_items'             => __( 'Search Research Memos', 'research-press' ),
+			'not_found'                => __( 'No research memos found', 'research-press' ),
+			'not_found_in_trash'       => __( 'No research memos found in Trash', 'research-press' ),
+			'all_items'                => __( 'All Research Memos', 'research-press' ),
+			'archives'                 => __( 'Research Memo Archives', 'research-press' ),
+			'attributes'               => __( 'Research Memo Attributes', 'research-press' ),
+			'insert_into_item'         => __( 'Insert into research memo', 'research-press' ),
+			'uploaded_to_this_item'    => __( 'Uploaded to this research memo', 'research-press' ),
+			'menu_name'                => __( 'Research Memos', 'research-press' ),
+			'filter_items_list'        => __( 'Filter Research Memo list', 'research-press' ),
+			'filter_by_date'           => __( 'Filter research memos by date', 'research-press' ),
+			'items_list_navigation'    => __( 'Research Memo list navigation', 'research-press' ),
+			'items_list'               => __( 'Research Memo list', 'research-press' ),
+			'item_published'           => __( 'Research Memo published', 'research-press' ),
+			'item_published_privately' => __( 'Research Memo published privately', 'research-press' ),
+			'item_reverted_to_draft'   => __( 'Research Memo reverted to draft', 'research-press' ),
+			'item_trashed'             => __( 'Research Memo trashed', 'research-press' ),
+			'item_scheduled'           => __( 'Research Memo scheduled', 'research-press' ),
+			'item_updated'             => __( 'Research Memo updated', 'research-press' ),
+			'item_link'                => __( 'Research Memo link', 'research-press' ),
+			'item_link_description'    => __( 'A link to a research memo', 'research-press' ),
+		);
+		$args   = array(
+			'labels'        => $labels,
+			'description'   => __( 'A research memo', 'research-press' ),
+			'public'        => true,
+			'hierarchical'  => false,
+			'show_in_rest'  => true,
+			'menu_position' => 2,
+			'menu_icon'     => 'dashicons-edit-large',
+			'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+			'taxonomies'    => array( 'person', 'organization', 'topic', 'location', 'source_type' ),
+			'has_archive'   => true,
+			'can_export'    => true,
+		);
+		register_post_type( 'research-memo', $args );
+		flush_rewrite_rules();
+}
+add_action( 'init', __NAMESPACE__ . '\add_research_memo_post_type', 0 );
+
+
+/**
  * Add Person taxonomy.
  */
 function add_person_taxonomy() {
@@ -96,7 +150,7 @@ function add_person_taxonomy() {
 		'show_in_rest'      => true,
 		'show_admin_column' => true,
 	);
-	register_taxonomy( 'persons', 'source', $args );
+	register_taxonomy( 'persons', array( 'source', 'research-memo' ), $args );
 }
 add_action( 'init', __NAMESPACE__ . '\add_person_taxonomy', 0 );
 
@@ -135,7 +189,7 @@ function add_organization_taxonomy() {
 		'show_in_rest'      => true,
 		'show_admin_column' => true,
 	);
-	register_taxonomy( 'organizations', 'source', $args );
+	register_taxonomy( 'organizations', array( 'source', 'research-memo' ), $args );
 }
 add_action( 'init', __NAMESPACE__ . '\add_organization_taxonomy', 0 );
 
@@ -174,7 +228,7 @@ function add_topics_taxonomy() {
 		'show_in_rest'      => true,
 		'show_admin_column' => true,
 	);
-	register_taxonomy( 'topics', 'source', $args );
+	register_taxonomy( 'topics', array( 'source', 'research-memo' ), $args );
 }
 add_action( 'init', __NAMESPACE__ . '\add_topics_taxonomy', 0 );
 
@@ -213,7 +267,7 @@ function add_locations_taxonomy() {
 		'show_in_rest'      => true,
 		'show_admin_column' => true,
 	);
-	register_taxonomy( 'locations', 'source', $args );
+	register_taxonomy( 'locations', array( 'source', 'research-memo' ), $args );
 }
 add_action( 'init', __NAMESPACE__ . '\add_locations_taxonomy', 0 );
 

@@ -19,10 +19,14 @@ $terms = get_terms(
 <!-- wp:heading {"level":2} -->
 <h2 class="wp-block-heading">Topics</h2>
 <!-- /wp:heading -->
-<ul>
+<!-- wp:list -->
+<ul class="wp-block-list">
 <?php foreach ( $terms as $source_term ) : ?>
+<!-- wp:list-item -->
 <li><a href="<?php echo esc_attr( get_term_link( $source_term ) ); ?>"><?php echo esc_html( $source_term->name ); ?></a></li>
+<!-- /wp:list-item -->
 <?php endforeach; ?>
 </ul>
+<!-- /wp:list -->
 </section>
 <!-- /wp:group -->
