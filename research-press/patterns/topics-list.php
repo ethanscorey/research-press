@@ -9,7 +9,7 @@
 
 $terms = get_terms(
 	array(
-		'taxonomy'   => 'persons',
+		'taxonomy'   => 'topics',
 		'hide_empty' => true,
 	)
 );
