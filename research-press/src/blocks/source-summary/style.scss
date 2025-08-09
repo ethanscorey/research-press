@@ -1,0 +1,26 @@
+.wp-block-research-press-source-summary {
+	background-color: #d4d9de;
+	padding: 2rem;
+
+	table {
+		text-align: left;
+		border-collapse: collapse;
+
+		tr {
+			border-block-end: 1px solid #ff6e06;
+
+			&:last-of-type {
+				border-block-end: none;
+			}
+
+			td,
+			th {
+				padding-block: 1rem;
+			}
+
+			td {
+				text-align: right;
+			}
+		}
+	}
+}

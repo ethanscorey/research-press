@@ -54,6 +54,7 @@ function add_source_post_type() {
 			'taxonomies'    => array( 'person', 'organization', 'topic', 'location', 'source_type' ),
 			'has_archive'   => true,
 			'can_export'    => true,
+			'template'      => array( array( 'research-press/source-summary' ) ),
 		);
 		register_post_type( 'source', $args );
 		flush_rewrite_rules();
@@ -502,3 +503,24 @@ function remove_new_post_from_admin_bar() {
 	$wp_admin_bar->remove_menu( 'new-user' );
 }
 add_action( 'wp_before_admin_bar_render', __NAMESPACE__ . '\remove_new_post_from_admin_bar' );
+
+
+/**
+ * Register blocks.
+ */
+function register_theme_blocks() {
+	$build_directory = get_template_directory() . '/build';
+	$block_manifest  = $build_directory . '/blocks-manifest.php';
+	if ( function_exists( 'wp_register_block_types_from_metadata_collection' ) ) {
+			wp_register_block_types_from_metadata_collection( $build_directory, $block_manifest );
+	} else {
+		if ( function_exists( 'wp_register_block_metadata_collection' ) ) {
+			wp_register_block_metadata_collection( $build_directory, $block_manifest );
+		}
+		$manifest_data = require $block_manifest;
+		foreach ( array_keys( $manifest_data ) as $block_type ) {
+			register_block_type( "$build_directory/{$block_type}" );
+		}
+	}
+}
+add_action( 'init', __NAMESPACE__ . '\register_theme_blocks' );

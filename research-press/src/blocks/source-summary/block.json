@@ -1,0 +1,32 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "research-press/source-summary",
+	"version": "0.1.0",
+	"title": "Source Summary",
+	"category": "widgets",
+	"icon": "media-interactive",
+	"description": "Summarize metadata about this source.",
+	"example": {},
+	"supports": {
+		"interactivity": true
+	},
+	"textdomain": "research-press",
+	"attributes": {
+		"sourceLink": {
+			"type": "string",
+			"default": ""
+		},
+		"date": {
+			"type": "string"
+		},
+		"authors": {
+			"type": "string"
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./style-index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScriptModule": "file:./view.js"
+}
