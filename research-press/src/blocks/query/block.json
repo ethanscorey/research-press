@@ -1,0 +1,17 @@
+{
+	"apiVersion": 3,
+	"name": "research-press/query",
+	"title": "Research Query",
+	"category": "widgets",
+	"supports": { "html": false },
+	"attributes": {
+		"postType": { "type": "string", "default": "source" },
+		"perPage": { "type": "number", "default": -1 },
+		"order": { "type": "string", "default": "DESC" },
+		"orderby": { "type": "string", "default": "date" },
+		"taxQuery": { "type": "array", "default": [] },
+		"metaQuery": { "type": "array", "default": [] },
+		"paged": { "type": "number", "default": 1 }
+	},
+	"render": "render.php"
+}
