@@ -578,3 +578,33 @@ function register_theme_blocks() {
 	}
 }
 add_action( 'init', __NAMESPACE__ . '\register_theme_blocks' );
+
+
+/**
+ * Restrict page visibility to logged in users.
+ */
+function login_wall() {
+	$current_page  = $GLOBALS['pagenow'] ?? '';
+	$is_login_page = in_array( $current_page, array( 'wp-login.php', 'wp-register.php' ), true );
+	$is_cli        = defined( 'WP_CLI' ) && WP_CLI;
+	$is_cron       = defined( 'DOING_CRON' ) && DOING_CRON;
+	if ( is_user_logged_in() || $is_login_page || $is_cli || $is_cron ) {
+		return;
+	}
+	auth_redirect();
+}
+add_action( 'template_redirect', __NAMESPACE__ . '\login_wall', 0 );
+
+/**
+ * Restrict REST visibility to logged in users.
+ *
+ * @param WP_Error|null|true $errors Existing errors.
+ * @return WP_Error|null|true
+ */
+function hide_rest( $errors ) {
+	if ( ! is_user_logged_in() ) {
+		return new \WP_Error( 'rest_forbidden', 'Login required.', array( 'status' => 401 ) );
+	}
+	return $errors;
+}
+add_filter( 'rest_authentication_errors', __NAMESPACE__ . '\hide_rest' );
